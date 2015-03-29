@@ -15,7 +15,10 @@ var Repl = require('repl'),
 
 
 if (process.argv.length == 2) {
-  var repl = Repl.start('> ');
+  var repl = Repl.start({
+    prompt: '> ',
+    useGlobal: true
+  });
   replHistory(repl, home('.node_history'));
 }
 else {
