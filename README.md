@@ -14,7 +14,7 @@ It makes your node use `~/.node_history` file to persist REPL history between se
 ## Install
 
 - `npm install -g node.history`
-- Alias `node.history` to `node` in your shell config.
+- Alias `node` to `node.history` in your shell config.
 
 ## License
 
