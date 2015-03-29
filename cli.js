@@ -4,7 +4,7 @@
 var replHistory = require('repl.history');
 
 var Repl = require('repl'),
-    spawnSync = require('child_process').spawnSync;
+    spawn = require('child_process').spawn;
 
 
 if (process.argv.length == 2) {
@@ -12,14 +12,12 @@ if (process.argv.length == 2) {
   replHistory(repl, process.env.HOME + '/.node_history');
 }
 else {
-  var ret = spawnSync(process.execPath, process.argv.slice(2), {
+  spawn(process.execPath, process.argv.slice(2), {
     stdio: 'inherit'
+  }).on('exit', function (code, signal) {
+    if (signal) {
+      process.kill(process.pid, signal);
+    }
+    process.exit(code);
   });
-  if (ret.error) {
-    throw ret.error;
-  }
-  if (ret.signal) {
-    process.kill(process.pid, ret.signal);
-  }
-  process.exit(ret.status);
 }
