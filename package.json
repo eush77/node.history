@@ -1,6 +1,6 @@
 {
   "name": "node.history",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Node wrapper that persists REPL history between sessions",
   "author": "Eugene Sharygin <eush77@gmail.com>",
   "license": "MIT",
